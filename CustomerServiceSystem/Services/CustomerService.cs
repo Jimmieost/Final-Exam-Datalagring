@@ -34,18 +34,13 @@ namespace CustomerServiceSystem.Services
             await _context.SaveChangesAsync();
             return _customerEntity.Id;
             
-           
-     
-        }
-        //public static async Task<IEnumerable<Customer>> GetAllAsync()
-        //{
-
-        //}
+           }
+       
 
         //public static async Task<Customer> GetAsync(string email)
-            
+
         //{
-                
+
         //}
 
         //public static async Task UpdateAsync (Customer customer)

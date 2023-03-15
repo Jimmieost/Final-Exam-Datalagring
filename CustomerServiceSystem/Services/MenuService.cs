@@ -43,15 +43,29 @@ internal class MenuService
         // Saving customer case to database
         addCase.CustomerId = await CustomerService.SaveAsync(customer);
         await CaseService.SaveAsync(addCase);   
-        
-
-
-
     }
 
-    public void ShowAllCases()
+    public async Task ShowAllCasesAsync()
     {
+        var cases = await CaseService.GetAllAsync();
 
+        if (cases.Any())
+        {
+            foreach (Case _case in cases)
+            {
+                Console.WriteLine($"Ärendenummer: {_case.Id}");
+                Console.WriteLine($"Titel: {_case.Title}");
+                Console.WriteLine($"Status: {_case.Status}");
+                Console.WriteLine($"Comment: {_case.Comment}");
+                Console.WriteLine($"Kund Id: {_case.CustomerId}");
+                Console.WriteLine("");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Det finns inga sparade ärenden.");
+            Console.WriteLine("");
+        }
     }
 
     public void SearchCase()

@@ -24,7 +24,7 @@ while (menuControll)
 
         case "2":
             Console.Clear();
-            menu.ShowAllCases();
+            await menu.ShowAllCasesAsync();
             break;
 
         case "3":
