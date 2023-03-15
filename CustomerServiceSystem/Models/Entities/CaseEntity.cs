@@ -12,19 +12,16 @@ namespace CustomerServiceSystem.Models.Entities
         public DateTime CaseReg { get; set; } = DateTime.Now;
 
         [Column(TypeName = "nvarchar(250)")]
+        public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
 
         [StringLength(10)]
-        public string NotHandledStatus { get; set; } = null!;
-
-        [StringLength(10)]
-        public string OngoingStatus { get; set; } = null!;
-
-        [StringLength(10)]
-        public string DoneStatus { get; set; } = null!;
-
+        public string Status { get; set; } = null!;
+        
         [Column(TypeName = "nvarchar(150)")]
-        public string? Comment { get; set; } 
+        public string? Comment { get; set; }
+
+        public ICollection<CustomerEntity> Customers { get; set; } = new HashSet<CustomerEntity>();
 
     }
 }

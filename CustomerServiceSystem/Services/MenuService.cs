@@ -5,7 +5,7 @@ namespace CustomerServiceSystem.Services;
 internal class MenuService
 {
    
-    public void CreateNewCase()
+    public async Task CreateNewCaseAsync()
     {
         var customer = new Customer();
 
@@ -22,11 +22,11 @@ internal class MenuService
         customer.PhoneNumber = Console.ReadLine() ?? "";
 
         Console.Write("Beskriv ditt ärende:");
-        customer.Case.Description = Console.ReadLine() ?? "";
+        customer.CaseId.Description = Console.ReadLine() ?? "";
 
-        
+
         // Saving customer case to database
-        
+        await CustomerService.SaveAsync(customer);
 
 
 

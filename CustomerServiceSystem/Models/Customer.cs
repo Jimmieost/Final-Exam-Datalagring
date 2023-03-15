@@ -7,7 +7,9 @@
         public string LastName { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
-        public Case Case { get; set; } = new Case();
+
+        public string Description { get; set; } = null!;    
+        public Case CaseId { get; set; } = new Case();
 
       
     }

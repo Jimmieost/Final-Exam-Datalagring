@@ -3,10 +3,12 @@
 var menu = new MenuService();
 bool menuControll = true;
 
+
+
 while (menuControll)
 {
     Console.Clear();
-    Console.WriteLine("1. Skapa ett nytt ärenden");
+    Console.WriteLine("1. Skapa ett nytt ärende");
     Console.WriteLine("2. Visa alla ärenden");
     Console.WriteLine("3. Sök ärenden");
     Console.WriteLine("4. Avsluta programmet");
@@ -16,7 +18,7 @@ while (menuControll)
     switch (Console.ReadLine())
     {
         case "1":
-            menu.CreateNewCase();
+            menu.CreateNewCaseAsync();
             break;
 
         case "2":

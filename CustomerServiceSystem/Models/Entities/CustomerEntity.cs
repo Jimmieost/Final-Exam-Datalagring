@@ -22,7 +22,9 @@ namespace CustomerServiceSystem.Models.Entities
         [Column(TypeName = "char(13)")]
         public string PhoneNumber { get; set; } = null!;
 
-        public int CaseId { get; set; } 
+        public string Description { get; set; } = null!;
+
+        public int CaseId { get; set; }
         public CaseEntity Case { get; set; } = null!;
 
     }

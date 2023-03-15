@@ -11,16 +11,15 @@ internal class DataContext : DbContext
     {
 
     }
-
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
-
+        
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (!optionsBuilder.IsConfigured)
-            optionsBuilder.UseSqlServer(_connectionString);
+        if (!optionsBuilder.IsConfigured) 
+             optionsBuilder.UseSqlServer(_connectionString);
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -29,7 +28,11 @@ internal class DataContext : DbContext
 
     public DbSet<CaseEntity> Cases { get; set; } = null!;
     public DbSet<CustomerEntity> Customers { get; set; } = null!;
+    public DbSet<AddressEntity> Addresses { get; set; } = null!;
 
 
 
 }
+
+
+
