@@ -21,7 +21,10 @@ namespace CustomerServiceSystem.Models.Entities
         [Column(TypeName = "nvarchar(150)")]
         public string? Comment { get; set; }
 
-        public ICollection<CustomerEntity> Customers { get; set; } = new HashSet<CustomerEntity>();
+        public int CustomerId { get; set; }
+        public CustomerEntity Customer { get; set; } = null!;
+
+
 
     }
 }

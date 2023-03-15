@@ -8,9 +8,9 @@ namespace CustomerServiceSystem.Services
     internal class CustomerService
     {
         public static DataContext _context = new DataContext();
-        public static async Task SaveAsync(Customer customer)
+        public static async Task<int> SaveAsync(Customer customer)
         {
-            var customerEntity = new CustomerEntity
+            var _customerEntity = new CustomerEntity
             {
                 FirstName = customer.FirstName,
                 LastName = customer.LastName,
@@ -18,18 +18,21 @@ namespace CustomerServiceSystem.Services
                 PhoneNumber = customer.PhoneNumber,
             };
 
-            var caseEntity = await _context.Cases.FirstOrDefaultAsync(x => x.Description == customer.Description);
-            if (caseEntity != null)
-                customerEntity.CaseId = caseEntity.Id;
+            var _addressEntity = await _context.Addresses.FirstOrDefaultAsync(x => x.StreetName == customer.StreetName && x.PostalCode == customer.PostalCode && x.City == customer.City);
+            if (_addressEntity != null)
+                _customerEntity.AddressId = _addressEntity.Id;
             else
-                customerEntity.Case = new CaseEntity
+                _customerEntity.Address = new AddressEntity
                 {
-                    Description = customer.Description,
+                    StreetName = customer.StreetName,
+                    PostalCode = customer.PostalCode,
+                    City = customer.City
 
                 };
             
-            _context.Add(customerEntity);
+            _context.Add(_customerEntity);
             await _context.SaveChangesAsync();
+            return _customerEntity.Id;
             
            
      

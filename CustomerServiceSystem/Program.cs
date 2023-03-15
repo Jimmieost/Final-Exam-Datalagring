@@ -18,18 +18,22 @@ while (menuControll)
     switch (Console.ReadLine())
     {
         case "1":
-            menu.CreateNewCaseAsync();
+            Console.Clear();
+            await menu.SaveCaseAsync(); 
             break;
 
         case "2":
+            Console.Clear();
             menu.ShowAllCases();
             break;
 
         case "3":
+            Console.Clear();
             menu.SearchCase();
             break;
 
         case "4":
+            Console.Clear();
             menuControll = false;
             break;
 
