@@ -8,5 +8,6 @@
         public int CustomerId { get; set; }
         public string Status { get; set; } = "Unhandled";
         public string? Comment { get; set; }
+        
     }
 }

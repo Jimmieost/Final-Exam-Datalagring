@@ -19,7 +19,7 @@ while (menuControll)
     {
         case "1":
             Console.Clear();
-            await menu.SaveCaseAsync(); 
+            await menu.CreateCaseAsync(); 
             break;
 
         case "2":
@@ -29,7 +29,7 @@ while (menuControll)
 
         case "3":
             Console.Clear();
-            menu.SearchCase();
+            await menu.SearchSpecificCaseAsync();
             break;
 
         case "4":

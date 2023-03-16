@@ -35,17 +35,33 @@ namespace CustomerServiceSystem.Services
                     Title = _case.Title,
                     Status = _case.Status,
                     Comment = _case.Comment,
-                    CustomerId= _case.CustomerId,
+                    CustomerId = _case.CustomerId,
+                    
                     
                 });
             return _cases;
         }
 
+        public static async Task<Case> GetAsync(int customerId)
+        {
+            var _case = await _context.Cases.Include(x => x.Customer).FirstOrDefaultAsync(x => x.CustomerId == customerId);
+            if (_case != null)
+                return new Case
+                {
+                    Id = _case.Id,
+                    Description = _case.Description,
+                    Title = _case.Title,
+                    Status = _case.Status,
+                    Comment = _case.Comment,
+                    CustomerId = _case.CustomerId,
 
-        //public static async Task<IEnumerable<Customer>> GetAllAsync()
-        //{
 
-        //}
+                };
+            else
+                return null!;
+        }
+
+
 
         //public static async Task<Customer> GetAsync(string email)
 

@@ -5,7 +5,7 @@ namespace CustomerServiceSystem.Services;
 internal class MenuService
 {
    
-    public async Task SaveCaseAsync()
+    public async Task CreateCaseAsync()
     {
         var customer = new Customer();
         var addCase = new AddCase(); 
@@ -57,7 +57,7 @@ internal class MenuService
                 Console.WriteLine($"Titel: {_case.Title}");
                 Console.WriteLine($"Status: {_case.Status}");
                 Console.WriteLine($"Comment: {_case.Comment}");
-                Console.WriteLine($"Kund Id: {_case.CustomerId}");
+                Console.WriteLine($"Kundnummer: {_case.CustomerId}");
                 Console.WriteLine("");
             }
         }
@@ -68,9 +68,35 @@ internal class MenuService
         }
     }
 
-    public void SearchCase()
+    public async Task SearchSpecificCaseAsync()
     {
+        Console.Write("Ange ett kundnummer:");
+        var customerId = Convert.ToInt32(Console.ReadLine()); 
 
+        if (customerId != null)
+        {
+            var cases = await CaseService.GetAsync(customerId);
+
+            if (cases != null)
+            {
+                Console.WriteLine($"Kundnummer: {cases.CustomerId}");
+                Console.WriteLine($"Titel: {cases.Title}");
+                Console.WriteLine($"Status: {cases.Status}");
+                Console.WriteLine($"Comment: {cases.Comment}.");
+                Console.WriteLine($"Ärendenummer: {cases.Id}");
+                Console.WriteLine("");
+
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine($"Det finns ingen kund med detta kundnummer {customerId}");
+                Console.WriteLine("");
+            }
+        }
+
+
+               
     }
 
 
