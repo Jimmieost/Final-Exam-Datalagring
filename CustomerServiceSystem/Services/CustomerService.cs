@@ -29,24 +29,12 @@ namespace CustomerServiceSystem.Services
                     City = customer.City
 
                 };
-            
+
             _context.Add(_customerEntity);
             await _context.SaveChangesAsync();
             return _customerEntity.Id;
-            
-           }
-       
 
-        //public static async Task<Customer> GetAsync(string email)
-
-        //{
-
-        //}
-
-        //public static async Task UpdateAsync (Customer customer)
-        //{
-
-        //}
+        }
 
 
     }

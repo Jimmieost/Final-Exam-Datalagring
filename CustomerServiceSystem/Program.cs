@@ -10,8 +10,9 @@ while (menuControll)
     Console.Clear();
     Console.WriteLine("1. Skapa ett nytt ärende");
     Console.WriteLine("2. Visa alla ärenden");
-    Console.WriteLine("3. Sök ärenden");
-    Console.WriteLine("4. Avsluta programmet");
+    Console.WriteLine("3. Sök specifikt ärende");
+    Console.WriteLine("4. Uppdatera ärendestatus");
+    Console.WriteLine("5. Avsluta programmet");
     Console.Write("Välj ett av ovan alternativ (1-3): ");
 
 
@@ -34,10 +35,15 @@ while (menuControll)
 
         case "4":
             Console.Clear();
+            await menu.UpdateCaseStatusAsync();
+            break;
+
+        case "5":
+            Console.Clear();
             menuControll = false;
             break;
 
-        default: Console.WriteLine("Välj ett av menyvalen 1-3 för att fortsätta.");
+        default: Console.WriteLine("Välj ett av menyvalen 1-4 för att fortsätta.");
                 break;
     }
     Console.ReadKey();

@@ -31,7 +31,6 @@ internal class DataContext : DbContext
     public DbSet<AddressEntity> Addresses { get; set; } = null!;
 
 
-
 }
 
 

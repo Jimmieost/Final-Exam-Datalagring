@@ -61,18 +61,46 @@ namespace CustomerServiceSystem.Services
                 return null!;
         }
 
+        public async Task<CaseEntity> UpdateCaseStatusAsync(int caseId, string newStatus)
+        {
+            var caseEntity = await _context.Cases.FindAsync(caseId);
 
+            if (caseEntity == null)
+            {
+                throw new ArgumentException($"Could not find case with ID {caseId}");
+            }
 
-        //public static async Task<Customer> GetAsync(string email)
+            caseEntity.Status = newStatus;
 
+            await _context.SaveChangesAsync();
+
+            return caseEntity;
+        }
+
+        
+
+        //public static async Task<Case> UpdateCaseStatusAsync(int caseId, string newStatus)
         //{
+        //    var _case = await GetAsync(caseId);
+
+        //    if (_case == null)
+
+        //    {
+        //        throw new ArgumentException($" Kunde inte hitta ett med ärendenummer {caseId}");
+
+
+        //    };
+
+        //    _case.Status = newStatus;
+
+        //    await _context.SaveChangesAsync();
+
+        //    return _case;
 
         //}
 
-        //public static async Task UpdateAsync (Customer customer)
-        //{
 
-        //}
+
 
 
     }
