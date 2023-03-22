@@ -1,4 +1,4 @@
-﻿using CustomerServiceSystem.Models.Entities;
+﻿
 
 namespace CustomerServiceSystem.Models
 {

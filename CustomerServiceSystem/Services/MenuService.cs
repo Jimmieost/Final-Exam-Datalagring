@@ -1,6 +1,5 @@
 ﻿using CustomerServiceSystem.Models;
-using CustomerServiceSystem.Models.Entities;
-using System;
+
 
 namespace CustomerServiceSystem.Services;
 
@@ -19,7 +18,7 @@ internal class MenuService
         Console.Write("Ange ditt Efternamn:");
         customer.LastName = Console.ReadLine() ?? "";
 
-        Console.Write("Ange ditt Email:");
+        Console.Write("Ange din Email:");
         customer.Email = Console.ReadLine() ?? "";
 
         Console.Write("Ange ditt telefonnummer:");
@@ -100,18 +99,39 @@ internal class MenuService
 
     public async Task UpdateCaseStatusAsync()
     {
-        Console.Write("Enter the ID of the case to update: ");
+        Console.Write("Skriv in kundnummer: ");
         var caseId = Convert.ToInt32(Console.ReadLine());
 
-        Console.Write("Enter the new status for the case: ");
-        var newStatus = Console.ReadLine();
+        Console.WriteLine("Ändra status på ärende.\n");
 
+        Console.WriteLine("1 - Ej påbörjad");
+        Console.WriteLine("2 - Pågående");
+        Console.WriteLine("3 - Avslutad");
+
+        var newStatus = "";
+
+        switch (Console.ReadLine())
+        {
+            case "1":
+                 newStatus = "Ej påbörjad";
+                break;
+            case "2":
+                newStatus = "Pågående";
+                break;
+            case "3":
+                newStatus = "Avslutad";
+                break;
+
+
+        }
         var caseService = new CaseService();
         var updatedCase = await caseService.UpdateCaseStatusAsync(caseId, newStatus);
 
 
 
-        Console.WriteLine($"Case with ID {updatedCase.Id} has been updated with new status: {updatedCase.Status}");
+
+
+        Console.WriteLine($"Ärende med nr. {updatedCase.Id} har blivit uppdaterad med status: {updatedCase.Status}");
     }
 
 
