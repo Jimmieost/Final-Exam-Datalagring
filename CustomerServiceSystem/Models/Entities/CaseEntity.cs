@@ -15,8 +15,8 @@ namespace CustomerServiceSystem.Models.Entities
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
 
-        [StringLength(10)]
-        public string Status { get; set; } = null!;
+        [StringLength(50)]
+        public string Status { get; set; } = "Ej påbörjad";
         
         [Column(TypeName = "nvarchar(150)")]
         public string? Comment { get; set; }

@@ -15,10 +15,11 @@ namespace CustomerServiceSystem.Services
                 Title = addCase.Title,
                 Description = addCase.Description,
                 CustomerId = addCase.CustomerId,
-                Status = addCase.Status,    
+                //Status = addCase.Status,    
             };
             
             _context.Add(_caseEntity);
+            
             await _context.SaveChangesAsync();
             return _caseEntity;
         }

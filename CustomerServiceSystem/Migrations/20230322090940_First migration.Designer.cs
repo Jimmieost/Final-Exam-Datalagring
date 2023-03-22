@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomerServiceSystem.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230315103007_First migration")]
+    [Migration("20230322090940_First migration")]
     partial class Firstmigration
     {
         /// <inheritdoc />
@@ -64,20 +64,25 @@ namespace CustomerServiceSystem.Migrations
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Cases");
                 });
@@ -91,9 +96,6 @@ namespace CustomerServiceSystem.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CaseEntityId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -119,12 +121,21 @@ namespace CustomerServiceSystem.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.HasIndex("CaseEntityId");
-
                     b.HasIndex("Email")
                         .IsUnique();
 
                     b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("CustomerServiceSystem.Models.Entities.CaseEntity", b =>
+                {
+                    b.HasOne("CustomerServiceSystem.Models.Entities.CustomerEntity", "Customer")
+                        .WithMany("Cases")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("CustomerServiceSystem.Models.Entities.CustomerEntity", b =>
@@ -135,10 +146,6 @@ namespace CustomerServiceSystem.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CustomerServiceSystem.Models.Entities.CaseEntity", null)
-                        .WithMany("Customers")
-                        .HasForeignKey("CaseEntityId");
-
                     b.Navigation("Address");
                 });
 
@@ -147,9 +154,9 @@ namespace CustomerServiceSystem.Migrations
                     b.Navigation("CustomerEntities");
                 });
 
-            modelBuilder.Entity("CustomerServiceSystem.Models.Entities.CaseEntity", b =>
+            modelBuilder.Entity("CustomerServiceSystem.Models.Entities.CustomerEntity", b =>
                 {
-                    b.Navigation("Customers");
+                    b.Navigation("Cases");
                 });
 #pragma warning restore 612, 618
         }
