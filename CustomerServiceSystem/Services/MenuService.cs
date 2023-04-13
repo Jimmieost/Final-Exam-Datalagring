@@ -134,41 +134,4 @@ internal class MenuService
         Console.WriteLine($"Ärende med nr. {updatedCase.Id} har blivit uppdaterad med status: {updatedCase.Status}");
     }
 
-
-    //public async Task UpdateSpecificCaseAsync()
-    //{
-    //    Console.Write("Ange ett ärendenummer: ");
-    //    var caseId = Convert.ToInt32(Console.ReadLine());
-
-    //    if (caseId != null)
-    //    {
-    //        var status = await CaseService.GetAsync(caseId);
-    //        if (status != null)
-    //        {
-    //            Console.WriteLine("Ändra status på ärende.");
-
-    //            Console.WriteLine("1 - Ej påbörjad");
-    //            Console.WriteLine("2 - Pågående");
-    //            Console.WriteLine("3 - Avslutad");
-
-    //            switch (Console.ReadLine())
-    //            {
-    //                case "1":
-    //                    status.Status = "Ej påbörjad";
-    //                    break;
-    //                case "2":
-    //                    status.Status = "Pågående";
-    //                    break;
-    //                case "3":
-    //                    status.Status = "Avslutad";
-    //                    break;
-
-
-    //            }
-    //        }
-    //        else
-    //            Console.WriteLine("Inget matchande ärendenummer funnet.");
-    //    }
-
-    //}
 }

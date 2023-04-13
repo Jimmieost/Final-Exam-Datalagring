@@ -78,33 +78,6 @@ namespace CustomerServiceSystem.Services
             return caseEntity;
         }
 
-        
-
-        //public static async Task<Case> UpdateCaseStatusAsync(int caseId, string newStatus)
-        //{
-        //    var _case = await GetAsync(caseId);
-
-        //    if (_case == null)
-
-        //    {
-        //        throw new ArgumentException($" Kunde inte hitta ett med ärendenummer {caseId}");
-
-
-        //    };
-
-        //    _case.Status = newStatus;
-
-        //    await _context.SaveChangesAsync();
-
-        //    return _case;
-
-        //}
-
-
-
-
-
     }
-
 
 }
