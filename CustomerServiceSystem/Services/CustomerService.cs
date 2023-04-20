@@ -8,6 +8,8 @@ namespace CustomerServiceSystem.Services
     internal class CustomerService
     {
         public static DataContext _context = new DataContext();
+
+        //Skapar en ny kund
         public static async Task<int> SaveAsync(Customer customer)
         {
             var _customerEntity = new CustomerEntity

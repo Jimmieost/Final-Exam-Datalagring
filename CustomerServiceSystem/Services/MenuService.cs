@@ -41,7 +41,8 @@ internal class MenuService
 
 
 
-        // Saving customer case to database
+        // sparar kundärende till databasen
+
         addCase.CustomerId = await CustomerService.SaveAsync(customer);
         await CaseService.SaveAsync(addCase);
     }

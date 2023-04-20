@@ -8,6 +8,8 @@ namespace CustomerServiceSystem.Services
     internal class CaseService
     {
         public static DataContext _context = new DataContext();
+
+        //Skapar ett nytt ärende
         public static async Task<CaseEntity> SaveAsync(AddCase addCase)
         {
             var _caseEntity = new CaseEntity
@@ -23,6 +25,8 @@ namespace CustomerServiceSystem.Services
             await _context.SaveChangesAsync();
             return _caseEntity;
         }
+
+        //Hämtar alla ärenden
 
         public static async Task<IEnumerable<Case>> GetAllAsync()
         {
@@ -43,6 +47,7 @@ namespace CustomerServiceSystem.Services
             return _cases;
         }
 
+        //Hämtar ett specifikt ärende när man söker på kundnummer
         public static async Task<Case> GetAsync(int customerId)
         {
             var _case = await _context.Cases.Include(x => x.Customer).FirstOrDefaultAsync(x => x.CustomerId == customerId);
@@ -62,6 +67,7 @@ namespace CustomerServiceSystem.Services
                 return null!;
         }
 
+        //Uppdaterar status på ett ärende
         public async Task<CaseEntity> UpdateCaseStatusAsync(int caseId, string newStatus)
         {
             var caseEntity = await _context.Cases.FindAsync(caseId);
