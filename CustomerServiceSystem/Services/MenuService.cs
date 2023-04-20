@@ -5,7 +5,7 @@ namespace CustomerServiceSystem.Services;
 
 internal class MenuService
 {
-
+    //Skapar ett nytt ärende.
     public async Task CreateCaseAsync()
     {
         var customer = new Customer();
@@ -47,6 +47,7 @@ internal class MenuService
         await CaseService.SaveAsync(addCase);
     }
 
+    //Listar alla ärenden som finns i databasen.
     public async Task ShowAllCasesAsync()
     {
         var cases = await CaseService.GetAllAsync();
@@ -70,6 +71,7 @@ internal class MenuService
         }
     }
 
+    //Söker efter ett specifikt ärende
     public async Task SearchSpecificCaseAsync()
     {
         Console.Write("Ange ett kundnummer:");
@@ -98,6 +100,7 @@ internal class MenuService
         }
     }
 
+    //Uppdaterar status på ärendet. 
     public async Task UpdateCaseStatusAsync()
     {
         Console.Write("Skriv in kundnummer: ");
